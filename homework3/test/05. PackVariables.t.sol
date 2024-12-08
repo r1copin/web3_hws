@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/05. PackVariables.sol";
+import "../src/05. PackVariables.sol";
 
 // forge test --match-contract PackVariables
 // forge test --match-contract PackVariables --gas-report

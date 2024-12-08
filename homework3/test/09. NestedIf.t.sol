@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/09. NestedIf.sol";
+import "../src/09. NestedIf.sol";
 
 // forge test --match-contract NestedIf
 // forge test --match-contract NestedIf --gas-report

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/06. Errors.sol";
+import "../src/06. Errors.sol";
 
 // forge test --match-contract Errors
 // forge test --match-contract Errors --gas-report

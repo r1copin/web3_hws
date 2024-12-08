@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/02. ArrayLength.sol";
+import "../src/02. ArrayLength.sol";
 
 // forge test --match-contract ArrayLength
 // forge test --match-contract ArrayLength --gas-report

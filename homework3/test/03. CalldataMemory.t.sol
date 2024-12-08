@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/03. CalldataMemory.sol";
+import "../src/03. CalldataMemory.sol";
 
 // forge test --match-contract CalldataMemory
 // forge test --match-contract CalldataMemory --gas-report

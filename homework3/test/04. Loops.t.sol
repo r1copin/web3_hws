@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "forge-std/Test.sol";
-import "src/04. Loops.sol";
+import "../src/04. Loops.sol";
 
 // forge test --match-contract Loops
 // forge test --match-contract Loops --gas-report
